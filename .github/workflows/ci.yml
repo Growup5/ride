@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-                                                      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -33,9 +33,17 @@ jobs:
         run: |
           IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/ride/python-app:${{ github.sha }}"
           IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
+          echo "Building image: $IMAGE_NAME_LOWER"
           docker buildx build --tag $IMAGE_NAME_LOWER .
+
+      - name: List Docker images
+        run: docker images
+
+      - name: Print Docker image name
+        run: echo $IMAGE_NAME_LOWER
 
       - name: Run Docker container
         run: |
-           docker run -d -p 8080:8080 $IMAGE_NAME_LOWER 
+          echo "Running container from image: $IMAGE_NAME_LOWER"
+          docker run -d -p 8080:8080 $IMAGE_NAME_LOWER
 
