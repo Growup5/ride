@@ -47,3 +47,4 @@ jobs:
           echo "Running container from image: $IMAGE_NAME_LOWER"
           docker run -d -p 8080:8080 $IMAGE_NAME_LOWER
 
+
