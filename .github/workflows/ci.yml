@@ -12,5 +12,5 @@ jobs:
       - name: Build Docker image
         run: docker build -t my-docker-image:latest .
 
-      - name: Run Docker container
-        run: docker run --rm my-docker-image:latest
+      - name: Run Docker container with port mapping
+        run: docker run -d -p 8080:80 my-docker-image:latest
