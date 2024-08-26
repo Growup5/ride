@@ -24,5 +24,4 @@ jobs:
           IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
           docker pull $IMAGE_NAME_LOWER
 
-      - name: Run docker-compose
-        run: docker-compose up -d
+   
