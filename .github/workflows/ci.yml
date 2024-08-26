@@ -17,4 +17,4 @@ jobs:
 
       - name: Test service
         run: |
-          curl http://localhost:8080
+          curl -v http://localhost:8080
