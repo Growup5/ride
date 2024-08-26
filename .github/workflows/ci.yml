@@ -12,5 +12,9 @@ jobs:
       - name: Build Docker image
         run: docker build -t my-docker-image:latest .
 
-      - name: Run Docker container with port mapping
+      - name: Run Docker container
         run: docker run -d -p 8080:80 my-docker-image:latest
+
+      - name: Test service
+        run: |
+          curl http://localhost:8080
