@@ -33,7 +33,7 @@ jobs:
         run: |
           IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/ride/python-app:${{ github.sha }}"
           IMAGE_NAME_LOWER=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
-          docker buildx build --tag $IMAGE_NAME_LOWER 
+          docker buildx build --tag $IMAGE_NAME_LOWER .
 
       - name: Run Docker container
         run: |
