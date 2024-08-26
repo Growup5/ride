@@ -37,5 +37,4 @@ jobs:
 
       - name: Run Docker container
         run: |
-           docker run -d -p 8080:8080 ghcr.io/growup5/ride/python-app:a0b6072f6872c2679c12e3db029eedfed0a7905f
-
+           docker run -d -p 8080:8080 $IMAGE_NAME_LOWER 
