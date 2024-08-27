@@ -1,25 +1,26 @@
 name: CD Pipeline
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
-      - name: Pull Docker image
-        run: docker pull ghcr.io/growup5/ride/python-app:a86b4d41cba74d59b0c09681563b6d60e0564dff
+    - name: Login to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Run docker-compose
-        run: docker-compose up -d
+    - name: Pull Docker image
+      run: docker pull ghcr.io/growup5/ride/python-app:545240ad87de2f0d11e314afc5d2fd18cf55d856
+
+    - name: Deploy with Docker Compose
+      run: docker compose up -d
