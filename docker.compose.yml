@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/growup5/ride/python-app:a86b4d41cba74d59b0c09681563b6d60e0564dff
+    ports:
+      - "8080:8080"
+    environment:
+      - ENV_VAR1=value1
+      - ENV_VAR2=value2
+    restart: always
+    volumes:
+      - ./app-data:/app/data
