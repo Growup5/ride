@@ -29,4 +29,4 @@ jobs:
       
       - name: Test App in Container
         id: test
-        run: curl -v http://localhost:8080/data
+        run: curl -v http://localhost:8080
