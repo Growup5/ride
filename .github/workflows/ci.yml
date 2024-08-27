@@ -7,26 +7,16 @@ on:
   pull_request:
     branches:
       - main
-    
+      
 jobs:
-
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout the branch
-        uses: actions/checkout@v3
-      
-      - name: Build Docker Image
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
         run: docker build -t python-app:latest .
-      
-      - name: Run Docker container with port
+
+      - name: Run Docker container with port mapping
         run: docker run -d -p 8080:8080 python-app:latest
-      
-      - name: Check Docker Container
-        id: check  
-        run: docker ps
-      
-      - name: Test App in Container
-        id: test
-        run: curl -v http://localhost:8080
