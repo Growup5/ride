@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull Docker image
-        run: docker pull python-app:latest
+        run: docker pull ghcr.io/growup5/ride/python-app:a86b4d41cba74d59b0c09681563b6d60e0564dff
 
       - name: Run docker-compose
         run: docker-compose up -d
