@@ -1,7 +1,7 @@
 version: '3'
 services:
   todo-app:
-    image: python-app:latest
+    image: ghcr.io/growup5/ride/python-app:545240ad87de2f0d11e314afc5d2fd18cf55d856
     ports:
       - "8080:8080"
     environment:
