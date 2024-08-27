@@ -18,11 +18,10 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Build Docker Image
-        run: |
-          cd app && docker build -t my/testapp .
+        run: docker build -t python-app:latest .
       
-      - name: Start Testapp Container
-        run: docker run -d -p 8080:8080 my/testapp
+      - name: Run Docker container with port
+        run: docker run -d -p 8080:8080 python-app:latest
       
       - name: Check Docker Container
         id: check  
