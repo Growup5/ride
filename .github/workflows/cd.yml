@@ -23,4 +23,4 @@ jobs:
       run: docker pull ghcr.io/growup5/ride/python-app:545240ad87de2f0d11e314afc5d2fd18cf55d856
 
     - name: Deploy with Docker Compose
-      run: docker compose up -d
+      run: docker-compose up -d
