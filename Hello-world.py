@@ -4,7 +4,7 @@ import http.server
 import socketserver
 
 # Define the port on which the server will run
-PORT = 8080
+PORT = 3000
 
 # Custom handler to serve a simple Hello World HTML page
 class HelloWorldHandler(http.server.SimpleHTTPRequestHandler):
