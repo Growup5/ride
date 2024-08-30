@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Hello-world.py
+  template:
+    metadata:
+      labels:
+        app: Hello-world.py
+    spec:
+      containers:
+      - name: hello-app
+        image: ghcr.io/softopshub/linux/todo-app:cafc17eb47d64a3236f9749727b94bf7d7e97a1c
+        ports:
+        - containerPort: 80
